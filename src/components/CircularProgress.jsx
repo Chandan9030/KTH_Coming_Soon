@@ -40,16 +40,17 @@ const CircularProgress = ({
           strokeDashoffset={progress}
           className="transition-all duration-1000 ease-in-out"
           style={{
-            filter: 'drop-shadow(0 0 8px rgba(249, 115, 22, 0.5))' // orange glow
+            // blue glow
+            filter: 'drop-shadow(0 0 8px rgba(56, 189, 248, 0.5))'
           }}
         />
         
         {/* Gradient Definition */}
         <defs>
           <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#f97316" />
-            <stop offset="50%" stopColor="#fb923c" />
-            <stop offset="100%" stopColor="#ea580c" />
+            <stop offset="0%" stopColor="#60a5fa" />
+            <stop offset="50%" stopColor="#38bdf8" />
+            <stop offset="100%" stopColor="#0ea5e9" />
           </linearGradient>
         </defs>
       </svg>

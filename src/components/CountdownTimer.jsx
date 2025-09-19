@@ -22,7 +22,7 @@ function getTimeRemaining(startDate, endDate) {
   return { days, hours, minutes, seconds };
 }
 
-const CountdownTimer = ({ startDate="2025-09-05T00:00:00", endDate="2025-10-06T00:00:00" }) => {
+const CountdownTimer = ({ startDate="2025-09-12T00:00:00", endDate="2025-10-13T00:00:00" }) => {
   // Defaults: start = now, end = 30 days from now (if not provided)
   const defaultStart = useMemo(() => new Date(), []);
   const defaultEnd = useMemo(() => new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), []);
@@ -67,7 +67,7 @@ const CountdownTimer = ({ startDate="2025-09-05T00:00:00", endDate="2025-10-06T0
           }}
         >
           <div className="relative w-full">
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-orange-500/20 hover:border-orange-400/40 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10 p-4">
+            <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-blue-600/20 hover:border-blue-600/40 shadow-lg shadow-blue-400/40 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 p-4">
               <div className="relative mx-auto">
                 <CircularProgress
                   value={unit.value}
@@ -79,7 +79,7 @@ const CountdownTimer = ({ startDate="2025-09-05T00:00:00", endDate="2025-10-06T0
                   <div className="text-2xl md:text-3xl font-bold text-white mb-1 tabular-nums">
                     {unit.value.toString().padStart(2, '0')}
                   </div>
-                  <div className="text-[10px] md:text-xs text-amber-200 uppercase tracking-[0.2em] font-medium">
+                  <div className="text-[10px] md:text-xs text-sky-200 uppercase tracking-[0.2em] font-medium">
                     {unit.label}
                   </div>
                 </div>

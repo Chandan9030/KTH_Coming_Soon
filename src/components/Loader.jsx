@@ -22,55 +22,124 @@ const draw = keyframes`
 // Fill fade-in
 const fillIn = keyframes`
   from { fill: transparent; opacity: 0; }
-  to { fill: #fb923c; opacity: 1; }
+  to { fill: #38bdf8; opacity: 1; }
 `;
 
+// SVG container: separate rules for mobile and desktop
 const SvgText = styled.svg`
-  width: 340px;
-  height: 160px;
+  /* Mobile-first */
+  width: 90vw;
+  max-width: 680px;
+  height: auto; /* viewBox controls aspect */
+
+  /* Tablet/Desktop */
+  @media (min-width: 768px) {
+    width: 75vw;
+  }
+
+  /* Large Desktop */
+  @media (min-width: 1200px) {
+    width: 680px;
+    height: 180px; /* viewBox controls aspect */
+  }
+`;
+
+// Shared base for the two text layers
+const sharedText = `
+  font-weight: 900;
+  font-family: Arial, Helvetica, sans-serif;
+  /* Mobile */
+  font-size: 42px;
+  letter-spacing: 6px;
+
+  /* Tablet/Desktop */
+  @media (min-width: 768px) {
+    font-size: 72px;
+    letter-spacing: 12px;
+  }
+
+  /* Large Desktop */
+  @media (min-width: 1200px) {
+    font-size: 100px;
+    letter-spacing: 15px;
+  }
 `;
 
 const StrokeText = styled.text`
-  font-size: 100px;
-  font-weight: 900;
-  letter-spacing: 15px;
-  font-family: Arial, Helvetica, sans-serif;
+  ${sharedText}
 
-  stroke: #fb923c;
-  stroke-width: 3;
+  stroke: #38bdf8;
+  /* Mobile */
+  stroke-width: 2px;
   stroke-linejoin: round;
   stroke-linecap: round;
   fill: transparent;
 
+  /* Tablet/Desktop */
+  @media (min-width: 768px) {
+    stroke-width: 2.5px;
+  }
+
+  /* Large Desktop */
+  @media (min-width: 1200px) {
+    stroke-width: 3px;
+  }
+
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: ${draw} 2.5s ease forwards;
+  animation: ${draw} 1.5s ease forwards; /* faster */
 `;
 
 const FillText = styled.text`
-  font-size: 100px;
-  font-weight: 900;
-  letter-spacing: 15px;
-  font-family: Arial, Helvetica, sans-serif;
+  ${sharedText}
 
-  fill: #fb923c;
+  fill: #38bdf8;
   opacity: 0;
-  animation: ${fillIn} 1s ease forwards;
-  animation-delay: 2.5s; /* stroke ke baad fill aayega */
+  animation: ${fillIn} 0.8s ease forwards;
+  animation-delay: 1.5s; /* stroke ke baad fill aayega */
+`;
+
+const FasterText = styled.text`
+  /* Mobile */
+  font-size: 14px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 2.5px;
+
+  /* Tablet/Desktop */
+  @media (min-width: 768px) {
+    font-size: 18px;
+    letter-spacing: 4px;
+  }
+
+  /* Large Desktop */
+  @media (min-width: 1200px) {
+    font-size: 24px;
+    letter-spacing: 5px;
+  }
+
+  fill: #60a5fa; /* blue */
+  opacity: 0;
+  animation: ${fillIn} 0.8s ease forwards;
+  animation-delay: 1.7s; /* thoda jaldi aayega */
 `;
 
 const Loader = () => {
   return (
     <Overlay>
-      <SvgText viewBox="0 0 400 150">
-        {/* Fill Layer (under) */}
-        <FillText x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
-          KTH
+      {/* Maintain an aspect via viewBox */}
+      <SvgText viewBox="0 0 500 200" preserveAspectRatio="xMidYMid meet">
+        {/* Optional subtext */}
+        {/* <FasterText x="115" y="35">FASTER</FasterText> */}
+
+        {/* Fill Layer */}
+        <FillText x="50%" y="60%" textAnchor="middle" dominantBaseline="middle">
+          SINGH CAB
         </FillText>
 
-        {/* Stroke Layer (on top) */}
-        <StrokeText x="50%" y="50%" textAnchor="middle" dominantBaseline="middle">
-          KTH
+        {/* Stroke Layer */}
+        <StrokeText x="50%" y="60%" textAnchor="middle" dominantBaseline="middle">
+          SINGH CAB
         </StrokeText>
       </SvgText>
     </Overlay>
@@ -78,123 +147,3 @@ const Loader = () => {
 };
 
 export default Loader;
-
-
-
-
-
-// import React from "react";
-// import styled, { keyframes } from "styled-components";
-
-// // Full-screen overlay
-// const Overlay = styled.div`
-//   position: fixed;
-//   inset: 0;
-//   z-index: 9999;
-//   background: #000;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// `;
-
-// // Stroke line drawing animation
-// const draw = keyframes`
-//   to {
-//     stroke-dashoffset: 0;
-//   }
-// `;
-
-// // Fill fade-in animation
-// const fillIn = keyframes`
-//   from { fill: transparent; }
-//   to { fill: #005BAC; }
-// `;
-
-// // Container for the logo
-// const LogoContainer = styled.div`
-//   width: 340px;
-//   height: 190px;
-//   position: relative;
-// `;
-
-// // SVG styling
-// const StyledSVG = styled.svg`
-//   width: 100%;
-//   height: 100%;
-  
-//   // Animate the KTH letters
-//   .kth-letter {
-//     stroke: #005BAC;
-//     stroke-width: 3;
-//     stroke-linejoin: round;
-//     stroke-linecap: round;
-//     fill: transparent;
-//     stroke-dasharray: 1000;
-//     stroke-dashoffset: 1000;
-//     animation: ${draw} 2.5s ease forwards;
-//   }
-  
-//   // Animate the crown
-//   .crown {
-//     stroke: #005BAC;
-//     stroke-width: 2;
-//     stroke-linejoin: round;
-//     stroke-linecap: round;
-//     fill: transparent;
-//     stroke-dasharray: 1500;
-//     stroke-dashoffset: 1500;
-//     animation: ${draw} 3s ease forwards;
-//   }
-  
-//   // Fill animation for letters
-//   .kth-fill {
-//     fill: #005BAC;
-//     opacity: 0;
-//     animation: ${fillIn} 1s ease forwards;
-//     animation-delay: 2.5s;
-//   }
-  
-//   // Fill animation for crown
-//   .crown-fill {
-//     fill: #005BAC;
-//     opacity: 0;
-//     animation: ${fillIn} 1s ease forwards;
-//     animation-delay: 3s;
-//   }
-// `;
-
-// const Loader = () => {
-//   return (
-//     <Overlay>
-//       <LogoContainer>
-//         <StyledSVG viewBox="0 0 962 536" xmlns="http://www.w3.org/2000/svg">
-//           {/* Crown outline */}
-//           <path class="crown" d="M481,130L320,310l50-90L250,310l50-90L180,310l60-90L100,360h762L722,220l60,90-60-90l50,90-50-90l50,90-50-90L642,220l50,90L581,130" />
-          
-//           {/* Crown fill */}
-//           <path class="crown-fill" d="M481,130L320,310l50-90L250,310l50-90L180,310l60-90L100,360h762L722,220l60,90-60-90l50,90-50-90l50,90-50-90L642,220l50,90L581,130" />
-          
-//           {/* K letter */}
-//           <path class="kth-letter" d="M200,450V200h40v100h80L240,200l80,120l80-120l-80,120h80V200h40v250h-40V280h-80l80,120l-80-120l-80,120l80-120h-80v170h-40" />
-          
-//           {/* T letter */}
-//           <path class="kth-letter" d="M400,450V200h160v40H440v210h-40" />
-          
-//           {/* H letter */}
-//           <path class="kth-letter" d="M600,450V200h40v210h80v40h-120" />
-          
-//           {/* K fill */}
-//           <path class="kth-fill" d="M200,450V200h40v100h80L240,200l80,120l80-120l-80,120h80V200h40v250h-40V280h-80l80,120l-80-120l-80,120l80-120h-80v170h-40" />
-          
-//           {/* T fill */}
-//           <path class="kth-fill" d="M400,450V200h160v40H440v210h-40" />
-          
-//           {/* H fill */}
-//           <path class="kth-fill" d="M600,450V200h40v210h80v40h-120" />
-//         </StyledSVG>
-//       </LogoContainer>
-//     </Overlay>
-//   );
-// };
-
-// export default Loader;

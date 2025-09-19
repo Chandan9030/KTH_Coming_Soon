@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Trophy } from 'lucide-react';
+import { Car } from 'lucide-react';
 import CountdownTimer from './CountdownTimer';
 import EmailForm from './EmailForm.jsx';
 import Loader from './Loader.jsx';
@@ -11,7 +11,7 @@ const ComingSoon = () => {
   useEffect(() => {
     setMounted(true);
     // Simulate initial loading for a brief, polished entrance
-    const t = setTimeout(() => setLoading(false), 1500);
+    const t = setTimeout(() => setLoading(false), 3000);
     return () => clearTimeout(t);
   }, []);
 
@@ -22,16 +22,15 @@ const ComingSoon = () => {
 
       {/* Background Video */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[177.78vh] h-[100vh] max-w-none">
-          <video
-            className="w-full h-full pointer-events-none"
-            src="./public/videoplayback.mp4"
-            title="Background Video"
-            autoPlay
-            loop
-            muted
-          />
-        </div>
+        <video
+          className="w-full h-full object-cover pointer-events-none"
+          src="/Singh_Cab.mp4"
+          title="Background Video"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
       </div>
 
       {/* Dark overlay for readability */}
@@ -40,18 +39,18 @@ const ComingSoon = () => {
       {/* Sports-styled Background Animation (on top of video, subtle) */}
       <div className="absolute inset-0 z-20 opacity-25">
         {/* soft gradient wash */}
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-orange-600/20 to-transparent animate-pulse"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-600/20 to-transparent animate-pulse"></div>
         {/* floating orbs */}
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-bounce"></div>
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-amber-400/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl animate-bounce"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-sky-300/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
         {/* dotted grid layer */}
         <div className="absolute inset-0 bg-dots animate-pan"></div>
         {/* diagonal motion stripes */}
         <div className="absolute inset-0 bg-animated-stripes"></div>
         {/* floating sports-like icons (circles like balls) */}
-        <div className="absolute top-16 left-10 w-10 h-10 rounded-full border border-orange-400/40 animate-drift"></div>
-        <div className="absolute top-32 right-14 w-8 h-8 rounded-full border border-amber-400/40 animate-drift" style={{ animationDelay: '400ms' }}></div>
-        <div className="absolute bottom-28 left-1/4 w-12 h-12 rounded-full border border-orange-500/30 animate-drift" style={{ animationDelay: '800ms' }}></div>
+        <div className="absolute top-16 left-10 w-10 h-10 rounded-full border border-blue-400/40 animate-drift"></div>
+        <div className="absolute top-32 right-14 w-8 h-8 rounded-full border border-sky-400/40 animate-drift" style={{ animationDelay: '400ms' }}></div>
+        <div className="absolute bottom-28 left-1/4 w-12 h-12 rounded-full border border-blue-500/30 animate-drift" style={{ animationDelay: '800ms' }}></div>
       </div>
 
       {/* Waves Animation */}
@@ -64,9 +63,9 @@ const ComingSoon = () => {
           />
           <defs>
             <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#f97316" stopOpacity="0.6"/>
-              <stop offset="50%" stopColor="#fb923c" stopOpacity="0.8"/>
-              <stop offset="100%" stopColor="#f97316" stopOpacity="0.6"/>
+              <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.6"/>
+              <stop offset="50%" stopColor="#38bdf8" stopOpacity="0.8"/>
+              <stop offset="100%" stopColor="#60a5fa" stopOpacity="0.6"/>
             </linearGradient>
           </defs>
         </svg>
@@ -79,21 +78,21 @@ const ComingSoon = () => {
           <div className="flex flex-col items-center justify-center mb-1 space-y-2">
             {/* Top logo image */}
             <img
-              src="/KTH_Logo.png"
-              alt="KTH Sports Logo"
-              className="h-16 w-16 md:h-32 md:w-32 object-contain"
+              src="/Singh_Cab.png"
+              alt="Singh Cab Logo"
+              className="h-32 w-32 md:h-56 md:w-56 lg:h-64 lg:w-64 object-contain"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
           </div>
 
-          {/* Title row with trophy and text */}
+          {/* Title row with Car and text */}
           <div className="flex items-center justify-center space-x-2 group">
             <div className="relative">
-              <Trophy className="w-9 h-9 md:w-10 md:h-10 text-orange-400 transition-transform duration-300 group-hover:scale-110" />
-              <div className="absolute inset-0 rounded-full blur-xl bg-orange-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <Car className="w-9 h-9 md:w-10 md:h-10 text-sky-400 transition-transform duration-300 group-hover:scale-110" />
+              <div className="absolute inset-0 rounded-full blur-xl bg-sky-400/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
-            <h1 className="text-1xl md:text-2xl lg:text-3xl font-extrabold tracking-wider bg-gradient-to-r from-white via-amber-100 to-orange-300 bg-clip-text text-transparent">
-              KTH SPORTS
+            <h1 className="text-1xl md:text-2xl lg:text-3xl font-extrabold tracking-wider bg-gradient-to-r from-white via-sky-100 to-blue-300 bg-clip-text text-transparent">
+              SINGH CAB
             </h1>
           </div>
 
@@ -102,7 +101,7 @@ const ComingSoon = () => {
             <h2 className="text-0xl md:text-1xl lg:text-2xl font-light text-white">
               We're Coming Soon
             </h2>
-            <p className="text-lg md:text-xl text-amber-200/80 font-light tracking-wide">
+            <p className="text-lg md:text-xl text-sky-200/80 font-light tracking-wide">
               Stay tuned for something Amazing
             </p>
           </div>

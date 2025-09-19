@@ -41,16 +41,16 @@ const CircularProgress = ({
           className="transition-all duration-1000 ease-in-out"
           style={{
             // blue glow
-            filter: 'drop-shadow(0 0 8px rgba(56, 189, 248, 0.5))'
+            filter: 'drop-shadow(0 0 8px rgba(255, 215, 0, 0.5))'
           }}
         />
         
         {/* Gradient Definition */}
         <defs>
           <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#60a5fa" />
-            <stop offset="50%" stopColor="#38bdf8" />
-            <stop offset="100%" stopColor="#0ea5e9" />
+            <stop offset="0%" stopColor="#FFD700" />
+            <stop offset="50%" stopColor="#FFD700" />
+            <stop offset="100%" stopColor="#FFD700" />
           </linearGradient>
         </defs>
       </svg>
@@ -59,7 +59,7 @@ const CircularProgress = ({
       <div 
         className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"
         style={{
-          background: 'radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%)',
         }}
       />
     </div>

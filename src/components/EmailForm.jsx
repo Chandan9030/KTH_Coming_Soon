@@ -88,9 +88,9 @@ const EmailForm = () => {
         {/* Status Message */}
         {message && (
           <div className={`flex items-center space-x-2 p-3 rounded-lg transition-all duration-300 ${
-            status === 'success' 
-              ? 'bg-green-500/20 border border-green-400/30 text-green-200' 
-              : 'bg-red-500/20 border border-red-400/30 text-red-200'
+            status === 'success'
+              ? 'bg-amber-500/20 border border-amber-400/30 text-amber-200'
+              : 'bg-amber-500/20 border border-amber-400/30 text-amber-200'
           }`}>
             {status === 'success' ? (
               <Check className="w-5 h-5 flex-shrink-0" />

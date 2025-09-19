@@ -22,7 +22,7 @@ const draw = keyframes`
 // Fill fade-in
 const fillIn = keyframes`
   from { fill: transparent; opacity: 0; }
-  to { fill: #38bdf8; opacity: 1; }
+  to { fill: #FFD700; opacity: 1; }
 `;
 
 // SVG container: separate rules for mobile and desktop
@@ -68,7 +68,7 @@ const sharedText = `
 const StrokeText = styled.text`
   ${sharedText}
 
-  stroke: #38bdf8;
+  stroke: #000000;
   /* Mobile */
   stroke-width: 2px;
   stroke-linejoin: round;
@@ -93,7 +93,7 @@ const StrokeText = styled.text`
 const FillText = styled.text`
   ${sharedText}
 
-  fill: #38bdf8;
+  fill: #FFD700;
   opacity: 0;
   animation: ${fillIn} 0.8s ease forwards;
   animation-delay: 1.5s; /* stroke ke baad fill aayega */
@@ -118,7 +118,7 @@ const FasterText = styled.text`
     letter-spacing: 5px;
   }
 
-  fill: #60a5fa; /* blue */
+  fill: #FFD700; /* gold */
   opacity: 0;
   animation: ${fillIn} 0.8s ease forwards;
   animation-delay: 1.7s; /* thoda jaldi aayega */
@@ -134,12 +134,12 @@ const Loader = () => {
 
         {/* Fill Layer */}
         <FillText x="50%" y="60%" textAnchor="middle" dominantBaseline="middle">
-          SINGH CAB
+          Chandrama 
         </FillText>
 
         {/* Stroke Layer */}
         <StrokeText x="50%" y="60%" textAnchor="middle" dominantBaseline="middle">
-          SINGH CAB
+          Chandrama 
         </StrokeText>
       </SvgText>
     </Overlay>
